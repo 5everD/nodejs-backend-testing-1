@@ -14,6 +14,7 @@ describe('PostsService', () => {
 
   it('should add a new post', () => {
     const newPost = postsService.create(post);
+
     expect(newPost).toHaveProperty("text", post.text);
     expect(newPost).toHaveProperty("id", "2");
     expect(newPost).toHaveProperty("date");
@@ -21,8 +22,11 @@ describe('PostsService', () => {
 
   it('should find a post', () => {
     const foundPost = postsService.find("1");
+    const notFindPost = postsService.find("2");
+
     expect(foundPost).toHaveProperty("text", "Some pre-existing post");
     expect(foundPost).toHaveProperty("id", "1");
     expect(foundPost).toHaveProperty("date");
+    expect(notFindPost).toBeUndefined();
   });
 });
